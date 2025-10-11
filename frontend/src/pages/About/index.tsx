@@ -62,7 +62,7 @@ const InstructorImage = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
   
-  img {
+  & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -105,14 +105,14 @@ const About: React.FC = () => {
   return (
     <AboutContainer>
       <AboutHeader>
-        <h1>About YogaMantra</h1>
+        <h1>About All The Classes</h1>
         <p>Discover the journey of self-discovery and holistic wellness through the ancient practice of yoga.</p>
       </AboutHeader>
       
       <Section>
         <h2>Our Story</h2>
         <p>
-          Founded in 2023, YogaMantra was born from a deep passion for sharing the transformative power of yoga. 
+          Founded in 2023, All The Classes was born from a deep passion for sharing the transformative power of yoga. 
           What started as a small community class has grown into a sanctuary for those seeking balance, strength, 
           and inner peace in their daily lives.
         </p>
@@ -126,29 +126,32 @@ const About: React.FC = () => {
       <InstructorSection>
         <InstructorImage>
           <img 
-            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
-            alt="Yoga Instructor" 
+            src="/mohit kumar yoga.jpg" 
+            alt="Mohit Kumar - Yoga Instructor" 
+            onError={(e) => {
+              // Fallback in case the image is not found
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80';
+              (e.target as HTMLImageElement).alt = 'Yoga Instructor';
+            }}
           />
         </InstructorImage>
         <InstructorInfo>
           <h2>Meet Our Lead Instructor</h2>
-          <h3>Priya Sharma</h3>
+          <h3>Mohit Kumar</h3>
           <p>
-            With over 15 years of experience in teaching yoga, Priya brings a wealth of knowledge and 
-            compassion to her classes. Certified in Hatha, Vinyasa, and Yin Yoga, she creates a nurturing 
-            environment where students can explore their practice at their own pace.
+            Mohit Kumar is a distinguished yoga instructor with over 18 years of global experience, including 8 years in India and 10 years in China. 
+            He holds a M.A. in Yoga and is an expert in Asanas, Pranayama, Mudras, and meditation.
           </p>
           <p>
-            "My journey with yoga began as a personal quest for healing, and it has since become my life's 
-            work to share its benefits with others. I believe in the power of yoga to transform lives, 
-            one breath at a time."
+            His teaching is rooted in ancient wisdom, drawing from the Patanjali Yoga Sutras and the Bhagavad Gita to train the physical, astral, and causal bodies.
+             Mohit's deep knowledge and diverse expertise make him an exceptional guide for any yoga practitioner.
           </p>
         </InstructorInfo>
       </InstructorSection>
       
       <Section>
         <h2>Our Values</h2>
-        <p>At YogaMantra, we are guided by these core principles:</p>
+        <p>At All The Classes, we are guided by these core principles:</p>
         
         <ValuesGrid>
           <ValueCard>
@@ -180,7 +183,7 @@ const About: React.FC = () => {
       <Section>
         <h2>Our Approach</h2>
         <p>
-          At YogaMantra, we believe in a holistic approach to yoga that goes beyond physical postures. 
+          At All The Classes, we believe in a holistic approach to yoga that goes beyond physical postures. 
           Our classes incorporate breathwork (pranayama), meditation, and philosophy to provide a 
           comprehensive yoga experience.
         </p>

@@ -373,7 +373,7 @@ const Contact: React.FC = () => {
           style={{ border: 0, borderRadius: '10px' }} 
           allowFullScreen 
           loading="lazy"
-          title="YogaMantra Location"
+          title="All The Classes Location"
         ></iframe>
       </div>
     </ContactContainer>

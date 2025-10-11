@@ -27,12 +27,8 @@ const Logo = styled(Link)`
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.8rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
-  
-  span {
-    color: ${({ theme }) => theme.colors.accent};
-  }
 `;
 
 const MenuIcon = styled.div`
@@ -96,7 +92,7 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer>
       <NavContent>
-        <Logo to="/">Yoga<span>Mantra</span></Logo>
+        <Logo to="/">All The <span>Classes</span></Logo>
         
         <MenuIcon onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -111,6 +107,9 @@ const Navbar: React.FC = () => {
           </NavItem>
           <NavItem>
             <NavLink to="/classes" onClick={() => setIsOpen(false)}>Classes</NavLink>
+          </NavItem>
+          <NavItem>
+           <NavLink to="/gallery" onClick={() => setIsOpen(false)}>Gallery</NavLink>
           </NavItem>
           <NavItem>
             <NavLink to="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
