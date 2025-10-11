@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as FaIcons from 'react-icons/fa';
+import { submitContactForm } from '../../utils/api';
+
 const FaMapMarkerAlt = FaIcons.FaMapMarkerAlt as React.ComponentType;
 const FaPhone = FaIcons.FaPhone as React.ComponentType;
 const FaEnvelope = FaIcons.FaEnvelope as React.ComponentType;
 const FaClock = FaIcons.FaClock as React.ComponentType;
-
 const ContactContainer = styled.div`
   max-width: 1200px;
   margin: 100px auto 0;
@@ -196,29 +197,32 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  
+  try {
+    await submitContactForm(formData);
+    setIsSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      interest: '',
+      message: ''
+    });
     
-    // Simulate form submission
+    // Hide success message after 5 seconds
     setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        interest: '',
-        message: ''
-      });
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
-  };
+      setIsSubmitted(false);
+    }, 5000);
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    // You might want to show an error message to the user here
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <ContactContainer>
