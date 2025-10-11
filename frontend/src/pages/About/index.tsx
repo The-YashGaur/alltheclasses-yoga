@@ -126,7 +126,7 @@ const About: React.FC = () => {
       <InstructorSection>
         <InstructorImage>
           <img 
-            src="/mohit kumar yoga.jpg" 
+            src="/gallery/mohit kumar yoga.jpg" 
             alt="Mohit Kumar - Yoga Instructor" 
             onError={(e) => {
               // Fallback in case the image is not found

@@ -121,7 +121,7 @@ const FilterButtons = styled.div`
     border: none;
     padding: 0.5rem 1.5rem;
     border-radius: 30px;
-    color: white;
+    color: black;
     cursor: pointer;
     transition: all 0.3s ease;
     
