@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as FaIcons from 'react-icons/fa';
+import Gallery from '../../pages/Gallery';
 const FaFacebook = FaIcons.FaFacebook as React.ComponentType;
 const FaInstagram = FaIcons.FaInstagram as React.ComponentType;
 const FaTwitter = FaIcons.FaTwitter as React.ComponentType;
@@ -91,6 +92,7 @@ const Footer: React.FC = () => {
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/classes">Classes</a></li>
+            <li><a href="/Gallery">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
           </FooterLinks>
         </FooterSection>
@@ -98,9 +100,9 @@ const Footer: React.FC = () => {
         <FooterSection>
           <h3>Contact Us</h3>
           <FooterLinks>
-            <li>123 Yoga Street, Peaceful City</li>
-            <li>Email: info@yogamantra.com</li>
-            <li>Phone: +1 234 567 8900</li>
+            <li>P-40A, Shashi Park Rd, near Ahlcon Public School, Supreme Enclave, Mayur Vihar, New Delhi, Delhi, 110091</li>
+            <li>Email: support@alltheclasses.com</li>
+            <li>Phone: +91 9625-852085</li>
           </FooterLinks>
         </FooterSection>
       </FooterContent>

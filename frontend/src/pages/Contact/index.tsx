@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as FaIcons from 'react-icons/fa';
 import { submitContactForm } from '../../utils/api';
+import LocationMap from '../../components/LocationMap';
 
 const FaMapMarkerAlt = FaIcons.FaMapMarkerAlt as React.ComponentType;
 const FaPhone = FaIcons.FaPhone as React.ComponentType;
@@ -242,7 +243,7 @@ const Contact: React.FC = () => {
             </div>
             <div className="text">
               <h4>Our Location</h4>
-              <p>123 Yoga Street, Peaceful City, PC 123456</p>
+              <p>P-40A, Shashi Park Rd, near Ahlcon Public School, Supreme Enclave, Mayur Vihar, New Delhi, Delhi, 110091</p>
             </div>
           </InfoItem>
           
@@ -252,7 +253,7 @@ const Contact: React.FC = () => {
             </div>
             <div className="text">
               <h4>Phone Number</h4>
-              <p>+1 234 567 8900</p>
+              <p>+91 9625-852085</p>
             </div>
           </InfoItem>
           
@@ -262,7 +263,7 @@ const Contact: React.FC = () => {
             </div>
             <div className="text">
               <h4>Email Address</h4>
-              <a href="mailto:info@yogamantra.com">info@yogamantra.com</a>
+              <a href="mailto:support@alltheclasses.com">support@alltheclasses.com</a>
             </div>
           </InfoItem>
           
@@ -315,7 +316,7 @@ const Contact: React.FC = () => {
                 name="phone" 
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+1 (123) 456-7890"
+                placeholder=""
               />
             </FormGroup>
             
@@ -365,16 +366,13 @@ const Contact: React.FC = () => {
         </FormContainer>
       </ContactGrid>
       
-      <div style={{ height: '400px', width: '100%', marginBottom: '4rem' }}>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209057837!2d-73.9878436845938!3d40.75889597932693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-          width="100%" 
-          height="100%" 
-          style={{ border: 0, borderRadius: '10px' }} 
-          allowFullScreen 
-          loading="lazy"
-          title="All The Classes Location"
-        ></iframe>
+      <div style={{ marginBottom: '4rem' }}>
+        <LocationMap 
+          latitude={28.608232}
+          longitude={77.292869}
+          zoom={16}
+          popupText="All The Classes Yoga Institute"
+        />
       </div>
     </ContactContainer>
   );
