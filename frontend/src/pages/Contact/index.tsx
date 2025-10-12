@@ -40,6 +40,15 @@ const ContactGrid = styled.div`
   
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
+    
+    /* Reverse the order of direct children on mobile */
+    & > *:first-child {
+      order: 2;
+    }
+    
+    & > *:last-child {
+      order: 1;
+    }
   }
 `;
 
