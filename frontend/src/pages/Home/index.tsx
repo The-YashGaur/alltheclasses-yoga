@@ -141,7 +141,7 @@ const Home: React.FC = () => {
           <h1>Welcome to All The Classes</h1>
           <p>Discover the path to a healthier, happier you through the ancient practice of yoga.</p>
           <div>
-            <Button to="/classes">View Classes</Button>
+            <Button to="/gallery">View Gallery</Button>
             <SecondaryButton to="/contact">Join Now</SecondaryButton>
           </div>
         </HeroContent>
