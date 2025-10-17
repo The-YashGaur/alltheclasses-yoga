@@ -129,18 +129,26 @@ const Gallery: React.FC = () => {
   const handleViewMoreClick = () => {
     window.scrollTo(0, 0);
   };
-   const galleryItems = [
-    { id: 1, src: "/gallery/photo1.jpg", alt: "Yoga class in session", span: 2 },
-    { id: 2, src: "/gallery/photo2.jpg", alt: "Group meditation", span: 1 },
-    { id: 3, src: "/gallery/photo3.jpg", alt: "Advanced yoga pose", span: 1 },
-    { id: 4, src: "/gallery/photo4.jpg", alt: "Sunset yoga session", span: 2 },
-    { id: 5, src: "/gallery/photo5.jpg", alt: "Yoga instructor guiding students", span: 1 },
-    { id: 6, src: "/gallery/photo6.jpg", alt: "Group yoga outdoors", span: 1 },
+
+  // Function to get the correct image path
+  const getImagePath = (imageName: string) => {
+    // In production, Vercel serves files from the root
+    // So we use process.env.PUBLIC_URL to get the correct base URL
+    return `${process.env.PUBLIC_URL || ''}/gallery/${imageName}`;
+  };
+
+  const galleryItems = [
+    { id: 1, src: getImagePath("photo1.jpg"), alt: "Yoga class in session", span: 2 },
+    { id: 2, src: getImagePath("photo2.jpg"), alt: "Group meditation", span: 1 },
+    { id: 3, src: getImagePath("photo3.jpg"), alt: "Advanced yoga pose", span: 1 },
+    { id: 4, src: getImagePath("photo4.jpg"), alt: "Sunset yoga session", span: 2 },
+    { id: 5, src: getImagePath("photo5.jpg"), alt: "Yoga instructor guiding students", span: 1 },
+    { id: 6, src: getImagePath("photo6.jpg"), alt: "Group yoga outdoors", span: 1 },
   ];
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const target = e.target as HTMLImageElement;
-    target.src = '/images/placeholder.jpg';
+    target.src = `${process.env.PUBLIC_URL || ''}/images/placeholder.jpg`;
     target.alt = 'Image not available';
   };
 

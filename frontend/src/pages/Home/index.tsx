@@ -374,7 +374,7 @@ const Home: React.FC = () => {
       <ValuesSection>
         <SectionTitle>Our Values</SectionTitle>
         <p style={{textAlign: 'center', marginBottom: '2rem', fontSize: '1.2rem', color: '#555'}}>
-          At All The Classes, we are guided by these core principles:
+          At The Yoga Classes, we are guided by these core principles:
         </p>
         <ValuesGrid>
           <ValueCard>

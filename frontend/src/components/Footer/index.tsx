@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <h3>All The Classes</h3>
+          <h3>The Yoga Classes</h3>
           <p>Find your inner peace and balance through the ancient practice of yoga. Join our community and start your journey to better health and wellbeing.</p>
           <SocialLinks>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
