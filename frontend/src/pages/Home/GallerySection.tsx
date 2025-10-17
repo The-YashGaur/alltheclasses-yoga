@@ -30,7 +30,7 @@ const SectionTitle = styled.h2`
 const GalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
+  grid-auto-rows: 250px;
   grid-gap: 20px;
   grid-auto-flow: dense;
   max-width: 1400px;
@@ -39,12 +39,12 @@ const GalleryGrid = styled.div`
   
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 150px;
+    grid-auto-rows: 200px;
   }
   
   @media (max-width: 480px) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-auto-rows: 120px;
+    grid-auto-rows: 150px;
   }
 `;
 
@@ -55,6 +55,10 @@ const GalleryItem = styled.div<{ span?: number }>`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   grid-row: span ${props => props.span || 1};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
   
   &:hover {
     transform: translateY(-5px);
@@ -78,6 +82,7 @@ const GalleryItem = styled.div<{ span?: number }>`
     bottom: 0;
     background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
     transition: opacity 0.3s ease;
+    z-index: 1;
   }
   
   img {
@@ -85,6 +90,10 @@ const GalleryItem = styled.div<{ span?: number }>`
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-position: center;
   }
   
   &.span-2 {
@@ -120,28 +129,38 @@ const Gallery: React.FC = () => {
   const handleViewMoreClick = () => {
     window.scrollTo(0, 0);
   };
-   return (
+   const galleryItems = [
+    { id: 1, src: "/gallery/photo1.jpg", alt: "Yoga class in session", span: 2 },
+    { id: 2, src: "/gallery/photo2.jpg", alt: "Group meditation", span: 1 },
+    { id: 3, src: "/gallery/photo3.jpg", alt: "Advanced yoga pose", span: 1 },
+    { id: 4, src: "/gallery/photo4.jpg", alt: "Sunset yoga session", span: 2 },
+    { id: 5, src: "/gallery/photo5.jpg", alt: "Yoga instructor guiding students", span: 1 },
+    { id: 6, src: "/gallery/photo6.jpg", alt: "Group yoga outdoors", span: 1 },
+  ];
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = '/images/placeholder.jpg';
+    target.alt = 'Image not available';
+  };
+
+  return (
     <GallerySection>
       <SectionTitle>Our Gallery</SectionTitle>
       <GalleryGrid>
-        <GalleryItem className="span-2">
-          <img src="/gallery/photo1.jpg" alt="Yoga pose 1" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
-        <GalleryItem>
-          <img src="/gallery/photo2.jpg" alt="Yoga pose 2" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
-        <GalleryItem>
-          <img src="/gallery/photo3.jpg" alt="Yoga pose 3" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
-        <GalleryItem className="span-2">
-          <img src="/gallery/photo4.jpg" alt="Yoga pose 4" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
-        <GalleryItem>
-          <img src="/gallery/photo5.jpg" alt="Yoga pose 5" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
-        <GalleryItem>
-          <img src="/gallery/photo6.jpg" alt="Yoga pose 6" onError={(e) => { e.currentTarget.src = '/gallery/placeholder.jpg'; }} />
-        </GalleryItem>
+        {galleryItems.map((item) => (
+          <GalleryItem 
+            key={item.id} 
+            className={item.span === 2 ? 'span-2' : ''}
+          >
+            <img 
+              src={item.src} 
+              alt={item.alt}
+              loading="lazy"
+              onError={handleImageError}
+            />
+          </GalleryItem>
+        ))}
       </GalleryGrid>
       <ViewMoreButton 
         to="/gallery" 

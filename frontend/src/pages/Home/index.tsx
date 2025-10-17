@@ -405,28 +405,7 @@ const Home: React.FC = () => {
 
       <GallerySection />
           
-      <FeaturesSection>
-        <SectionTitle>Why Choose Us</SectionTitle>
-        <FeaturesGrid>
-          <FeatureCard>
-            <IconWrapper>🧘‍♀️</IconWrapper>
-            <h3>Expert Instructors</h3>
-            <p>Learn from certified yoga instructors with years of experience in various yoga styles.</p>
-          </FeatureCard>
-          
-          <FeatureCard>
-            <IconWrapper>🌿</IconWrapper>
-            <h3>Holistic Approach</h3>
-            <p>We focus on mind, body, and spirit connection for complete wellbeing.</p>
-          </FeatureCard>
-          
-          <FeatureCard>
-            <IconWrapper>🌟</IconWrapper>
-            <h3>Flexible Classes</h3>
-            <p>Choose from various class timings that fit your schedule.</p>
-          </FeatureCard>
-        </FeaturesGrid>
-      </FeaturesSection>
+    
       
       <CtaSection>
         <CtaContent>
