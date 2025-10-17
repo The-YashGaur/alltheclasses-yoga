@@ -130,12 +130,14 @@ const Gallery: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
-  // Function to get the correct image path
   const getImagePath = (imageName: string) => {
-    // In production, Vercel serves files from the root
-    // So we use process.env.PUBLIC_URL to get the correct base URL
-    return `${process.env.PUBLIC_URL || ''}/gallery/${imageName}`;
-  };
+  // For Vercel deployment, use absolute URL
+  if (process.env.NODE_ENV === 'production') {
+    return `/gallery/${imageName}`;
+  }
+  // For development
+  return `${process.env.PUBLIC_URL || ''}/gallery/${imageName}`;
+};
 
   const galleryItems = [
     { id: 1, src: getImagePath("photo1.jpg"), alt: "Yoga class in session", span: 2 },
@@ -147,10 +149,13 @@ const Gallery: React.FC = () => {
   ];
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const target = e.target as HTMLImageElement;
-    target.src = `${process.env.PUBLIC_URL || ''}/images/placeholder.jpg`;
-    target.alt = 'Image not available';
-  };
+  const target = e.target as HTMLImageElement;
+  console.error('Failed to load image:', target.src); // This will help debug
+  target.src = process.env.NODE_ENV === 'production' 
+    ? '/images/placeholder.jpg' 
+    : `${process.env.PUBLIC_URL || ''}/images/placeholder.jpg`;
+  target.alt = 'Image not available';
+};
 
   return (
     <GallerySection>
