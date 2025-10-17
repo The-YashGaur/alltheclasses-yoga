@@ -339,7 +339,7 @@ const Home: React.FC = () => {
         </HeroSubtitle>
         <ButtonGroup>
           <Button to="/contact" style={{ backgroundColor: '${({ theme }) => theme.colors.accent}', borderColor: '${({ theme }) => theme.colors.accent}' }}>Book Your Free Demo</Button>
-          <SecondaryButton to="/about">Learn More</SecondaryButton>
+          <SecondaryButton to="/classes">Learn More</SecondaryButton>
         </ButtonGroup>
       </HeroContent>
       </HeroSection>
