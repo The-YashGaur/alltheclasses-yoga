@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer>
       <NavContent>
-        <Logo to="/">All The <span>Classes</span></Logo>
+        <Logo to="/">The Yoga <span>Classes</span></Logo>
         
         <MenuIcon onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
